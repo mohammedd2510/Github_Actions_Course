@@ -2,12 +2,11 @@ name: External Trigger Workflow
 
 on:
   repository_dispatch:
-    types:
-      - incident_report
+    types: report
 
 jobs:
   external:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Triggered by an external event!"
-      - run: echo "Client payload value: ${{ github.event.client_payload.my_key }}"
+      # - run: echo "Client payload value: ${{ github.event.client_payload.my_key }}"
