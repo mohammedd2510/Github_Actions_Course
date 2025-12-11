@@ -1,0 +1,31 @@
+name: My First Workflow
+
+on: 
+   push:
+        
+
+jobs:
+  first-job:
+    name: my build job 
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Print greeting
+        run: |
+          echo "Hello, GitHub Actions!"
+          echo "mohamed"
+      
+      - name: Print date
+        run: echo "Today is $(date)"
+      
+      - name: Print working directory
+        run: echo "Current directory is $(pwd)"
+
+  Deploy:
+   name: Deploy Job
+   runs-on: ubuntu-latest
+   steps:
+    - name : deploy
+      run: echo "deploying"
+    
+      
