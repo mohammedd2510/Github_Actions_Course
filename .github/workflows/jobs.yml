@@ -1,0 +1,39 @@
+name: Parallel Jobs Example
+
+on: [push]
+
+jobs:
+  test-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run unit tests
+        run: |
+          echo "⚡ Running unit tests..."
+          echo "Testing module A..."
+          echo "Testing module B..."
+          echo "✓ All unit tests passed!"
+          sleep 30
+  
+  test-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run integration tests
+        run: |
+          echo "⚡ Running integration tests..."
+          echo "Testing API endpoints..."
+          echo "Testing database connections..."
+          echo "✓ All integration tests passed!"
+          sleep 30
+  
+  lint:
+    runs-on: ubuntu-latest
+    # needs: 
+    #      - test-integration
+    #      - test-unit
+    steps:
+      - name: Run linter
+        run: |
+          echo "⚡ Running linter..."
+          echo "Checking code style..."
+          echo "✓ Linting complete!"
+          sleep 30
