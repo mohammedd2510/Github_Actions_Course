@@ -3,7 +3,7 @@ name: External Trigger Workflow
 on:
   repository_dispatch:
     types:
-      - custom-event
+      - incident_report
 
 jobs:
   external:
