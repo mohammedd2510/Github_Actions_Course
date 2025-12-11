@@ -1,0 +1,93 @@
+name: Steps-Actions-Example
+
+on:
+  push:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+
+      # ---------------------------------------------------------
+      # ACTION 1: Checkout repository
+      # ---------------------------------------------------------
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ---------------------------------------------------------
+      # ACTION 2: Setup Node.js
+      # ---------------------------------------------------------
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # ---------------------------------------------------------
+      # Check Node.js version after setup
+      # ---------------------------------------------------------
+      - name: Check Node.js version
+        run: |
+          echo "Node version installed:"
+          node -v
+          echo "NPM version installed:"
+          npm -v
+
+      # ---------------------------------------------------------
+      # Create working directory
+      # ---------------------------------------------------------
+      - name: Create scripts directory
+        run: mkdir -p scripts
+
+      # ---------------------------------------------------------
+      # Bash shell example
+      # ---------------------------------------------------------
+      - name: Example with bash shell
+        shell: bash
+        working-directory: scripts
+        continue-on-error: true
+        env:
+          NAME: Mohamed
+          CITY: Cairo
+        run: |
+          echo "$PWD"
+          echo "Bash shell executing..."
+          echo "Hello $NAME from $CITY"
+          exit 1   # will not break workflow
+
+      # ---------------------------------------------------------
+      # SH shell example
+      # ---------------------------------------------------------
+      - name: Example with sh shell
+        shell: sh
+        run: |
+          echo "This is sh shell"
+          echo "Current dir: $(pwd)"
+
+      # ---------------------------------------------------------
+      # PowerShell Core example
+      # ---------------------------------------------------------
+      - name: Example with pwsh shell
+        shell: pwsh
+        run: |
+          Write-Host "This is PowerShell Core"
+          Write-Host "Current directory:"
+          Get-Location
+
+      # ---------------------------------------------------------
+      # Python shell example
+      # ---------------------------------------------------------
+      - name: Example with python shell
+        shell: python
+        working-directory: scripts
+        run: |
+          import os
+          print("Running inside Python shell...")
+          print("Current directory:", os.getcwd())
+          x = 5 + 10
+          print("Sum:", x)
+
+      # ---------------------------------------------------------
+      # Final step
+      # ---------------------------------------------------------
+      - name: Final step after everything
+        run: echo "All shells executed successfully 🎉"
