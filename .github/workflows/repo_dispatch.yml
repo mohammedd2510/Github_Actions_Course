@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Triggered by an external event!"
-      # - run: echo "Client payload value: ${{ github.event.client_payload.my_key }}"
+      - run: echo "Client payload value: ${{ github.event.client_payload.my_key }}"
