@@ -2,12 +2,12 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - dev
+     - dev
     paths:
       - 'src/**'
   pull_request:
     branches:
-      - main
+      - master
     paths:
       - 'src/**'
   schedule:
